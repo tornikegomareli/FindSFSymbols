@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>FindSFSymbols</title>
+        <item>
+            <title>0.1.1</title>
+            <pubDate>Sun, 20 Sep 2026 11:52:44 +0400</pubDate>
+            <link>https://tornikegomareli.github.io/FindSFSymbols/</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/tornikegomareli/FindSFSymbols/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/tornikegomareli/FindSFSymbols/releases/download/v0.1.1/FindSFSymbols-0.1.1.zip" length="1945872" type="application/octet-stream" sparkle:edSignature="ISMt3D5K4Pn6b2eyClBcln23KExFYKkbyVK7zW2I74lpyhTCEfdL0kzPounkmP4+qxDfyQMZGpYPHestaHxGAQ=="/>
+        </item>
+    </channel>
+</rss>
