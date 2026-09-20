@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FindSFSymbols</title>
+<meta name="description" content="Describe an SF Symbol in plain words. The matches float up out of a physics pile. A free, open source macOS app.">
+<meta property="og:title" content="FindSFSymbols">
+<meta property="og:description" content="Describe a symbol. The matches float up out of a physics pile.">
+<meta property="og:image" content="https://tornikegomareli.github.io/FindSFSymbols/assets/search.png">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root {
+    --bg: #ececef; --card: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --line: rgba(0,0,0,.08);
+    --accent: #0a84ff; --code: #f5f5f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111113; --card: #1c1c1f; --text: #f5f5f7; --muted: #a1a1a6; --line: rgba(255,255,255,.1); --code: #26262a; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 72px 20px 40px; }
+  header { text-align: center; }
+  header img { width: 112px; height: 112px; }
+  h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.05; letter-spacing: -.02em; margin: 12px 0 14px; }
+  .tagline { font-size: clamp(19px, 2.6vw, 24px); color: var(--muted); max-width: 640px; margin: 0 auto 36px; }
+  .install { max-width: 680px; margin: 0 auto; text-align: left; }
+  .command {
+    display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 14px 14px 14px 20px; margin: 12px 0; box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  }
+  .command span { font-size: 13px; color: var(--muted); width: 74px; flex: none; }
+  .command code { flex: 1; overflow-x: auto; white-space: nowrap; font: 14px ui-monospace, "SF Mono", Menlo, monospace; }
+  .command button {
+    flex: none; border: 0; border-radius: 10px; padding: 8px 14px; font: inherit; font-size: 14px;
+    background: var(--accent); color: #fff; cursor: pointer;
+  }
+  .links { text-align: center; margin: 18px 0 0; font-size: 15px; color: var(--muted); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .shot { margin: 56px 0 8px; }
+  .shot img { width: 100%; height: auto; display: block; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.16); }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 48px 0; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+  .feature h2 { font-size: 18px; margin: 0 0 6px; }
+  .feature p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  kbd { font: 13px ui-monospace, Menlo, monospace; background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+  footer { text-align: center; color: var(--muted); font-size: 13.5px; padding: 8px 20px 56px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="assets/icon.png" alt="FindSFSymbols icon">
+    <h1>FindSFSymbols</h1>
+    <p class="tagline">Describe a symbol in plain words. The matches float up out of a physics pile. Click one and its name is on your clipboard.</p>
+  </header>
+
+  <section class="install" aria-label="Install">
+    <div class="command"><span>Homebrew</span><code>brew install --cask tornikegomareli/tap/findsfsymbols</code><button type="button">Copy</button></div>
+    <div class="command"><span>Script</span><code>curl -fsSL https://raw.githubusercontent.com/tornikegomareli/FindSFSymbols/main/install.sh | bash</code><button type="button">Copy</button></div>
+    <p class="links">
+      <a href="https://github.com/tornikegomareli/FindSFSymbols/releases/latest/download/FindSFSymbols.zip">Download the zip</a>
+      &nbsp;·&nbsp; <a href="https://github.com/tornikegomareli/FindSFSymbols">Source on GitHub</a>
+      &nbsp;·&nbsp; macOS 14 or later, notarized by Apple
+    </p>
+  </section>
+
+  <div class="shot">
+    <img src="assets/search.png" width="2000" height="1200" alt="The query 'things you can wear': a jacket, a t-shirt, sunglasses and shoes float under the search bar, above a pile of colored symbols.">
+  </div>
+
+  <section class="features">
+    <div class="feature"><h2>Search by meaning</h2><p>"bad weather" finds the storm cloud and the tornado. The first stage runs on your Mac. With a TypeSafe key, Jev scores the best 48 candidates.</p></div>
+    <div class="feature"><h2>The score is physics</h2><p>A sure match floats high and holds still. A weak match hangs low and wobbles. A rejected symbol falls back into the pile.</p></div>
+    <div class="feature"><h2>From any app</h2><p>Press <kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>Space</kbd>, type, click. The panel closes and the name is pasted where you were.</p></div>
+    <div class="feature"><h2>Safe for old iOS</h2><p>Set your deployment target. Symbols that need a later iOS turn gray and stay low, so you do not ship a blank icon.</p></div>
+    <div class="feature"><h2>Play with it</h2><p>Drag a symbol and throw it. Shake the window and the pile slides with real inertia.</p></div>
+    <div class="feature"><h2>Private</h2><p>No analytics and no account. Without a key the app makes no network requests. The key stays in your Keychain.</p></div>
+  </section>
+</main>
+<footer>
+  MIT licensed. Made by <a href="https://github.com/tornikegomareli">Tornike Gomareli</a>.<br>
+  SF Symbols is a trademark of Apple Inc. This project is not affiliated with Apple.
+</footer>
+<script>
+  for (const button of document.querySelectorAll('.command button')) {
+    button.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+      button.textContent = 'Copied';
+      setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+    });
+  }
+</script>
+</body>
+</html>

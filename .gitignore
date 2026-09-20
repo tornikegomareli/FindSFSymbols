@@ -1,0 +1,6 @@
+.build/
+*.app
+*.profraw
+dist/
+Icon.iconset/
+.DS_Store
