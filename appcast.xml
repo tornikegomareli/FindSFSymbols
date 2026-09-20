@@ -3,6 +3,16 @@
     <channel>
         <title>FindSFSymbols</title>
         <item>
+            <title>0.1.2</title>
+            <pubDate>Sun, 20 Sep 2026 12:09:53 +0400</pubDate>
+            <link>https://tornikegomareli.github.io/FindSFSymbols/</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/tornikegomareli/FindSFSymbols/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/tornikegomareli/FindSFSymbols/releases/download/v0.1.2/FindSFSymbols-0.1.2.zip" length="1907908" type="application/octet-stream" sparkle:edSignature="B9KgliS+UflOnuBljV8POoKLmgMzD2vAJebeQZC/nYa/5lEYJlIjBx9EDr6+uILI9lbGK9xCjiyRi6Veqv/nAQ=="/>
+        </item>
+        <item>
             <title>0.1.1</title>
             <pubDate>Sun, 20 Sep 2026 11:52:44 +0400</pubDate>
             <link>https://tornikegomareli.github.io/FindSFSymbols/</link>
