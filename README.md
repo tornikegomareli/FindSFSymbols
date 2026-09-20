@@ -15,8 +15,10 @@
 ## Showcase
 
 <p align="center">
-  <img src="docs/assets/search.png" width="90%" alt="The query 'things you can wear' with a jacket, a hat, a t-shirt, sunglasses and shoes floating under the search bar, above a pile of colored symbols" />
+  <img src="https://github.com/user-attachments/assets/1c011d02-4003-4819-b26d-96b8a322030f" width="90%" alt="The query 'things you can wear' with a jacket, a hat, a t-shirt, sunglasses and shoes floating under the search bar, above a pile of colored symbols" />
 </p>
+
+
 
 
 Type "things you can wear" and you get the t-shirt, the shoes and the sunglasses, not only symbols with
