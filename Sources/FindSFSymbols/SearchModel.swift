@@ -67,9 +67,8 @@ final class SearchModel {
     }
 
     private func load() async {
-        let url = Bundle.main.url(forResource: "symbols", withExtension: "json")
-            ?? Bundle.module.url(forResource: "symbols", withExtension: "json")
-        guard let url, let catalog = try? Data(contentsOf: url) else {
+        guard let url = Bundle.main.url(forResource: "symbols", withExtension: "json"),
+              let catalog = try? Data(contentsOf: url) else {
             status = "symbols.json is missing. Run Scripts/build_catalog.py."
             return
         }

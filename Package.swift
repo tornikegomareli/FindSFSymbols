@@ -14,9 +14,9 @@ let package = Package(
             name: "FindSFSymbols",
             dependencies: ["SymbolSearch", .product(name: "Sparkle", package: "Sparkle")],
             path: "Sources/FindSFSymbols",
-            resources: [
-                .process("Resources"),
-            ]),
+            // package_app.sh copies Resources into the app bundle. A SwiftPM resource bundle is not used,
+            // because its generated accessor writes the absolute build path into the binary.
+            exclude: ["Resources"]),
         .target(
             name: "SymbolSearch",
             path: "Sources/SymbolSearch"),

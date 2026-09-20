@@ -158,6 +158,8 @@ cask "findsfsymbols" do
   desc "Semantic SF Symbols search with a physics pile"
   homepage "https://tornikegomareli.github.io/FindSFSymbols/"
 
+  # The app updates itself with Sparkle. This stops brew from reporting it as outdated.
+  auto_updates true
   depends_on macos: :sonoma
 
   app "$APP_NAME.app"

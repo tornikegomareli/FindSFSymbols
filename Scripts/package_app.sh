@@ -65,6 +65,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
     <key>LSMinimumSystemVersion</key><string>${MACOS_MIN_VERSION}</string>
     <key>LSUIElement</key><${LSUI_VALUE}/>
     <key>CFBundleIconFile</key><string>Icon</string>
+    <key>LSApplicationCategoryType</key><string>public.app-category.developer-tools</string>
     <key>SUFeedURL</key><string>https://raw.githubusercontent.com/tornikegomareli/FindSFSymbols/main/appcast.xml</string>
     <key>SUPublicEDKey</key><string>${SPARKLE_PUBLIC_KEY}</string>
     <key>SUEnableAutomaticChecks</key><true/>
