@@ -97,6 +97,13 @@ Run the tests:
 swift test
 ```
 
+## Updates
+
+The app updates itself with [Sparkle](https://sparkle-project.org). It checks one time per day, and
+**FindSFSymbols → Check for Updates…** checks at once. Every update is signed with an EdDSA key and
+notarized by Apple, and the app rejects an update with a wrong signature. An install from Homebrew
+updates with `brew upgrade --cask findsfsymbols` too.
+
 ## Using it
 
 | Action | Gesture |
@@ -122,7 +129,7 @@ Scripts/release.sh patch --dry-run  # build, sign, notarize and verify, but publ
 ```
 
 It bumps `version.env`, runs the tests, builds a universal app, signs it with the Developer ID, notarizes
-and staples it, publishes a GitHub release with the zip, and updates the cask in
+and staples it, signs the Sparkle `appcast.xml`, publishes a GitHub release with the zip, and updates the cask in
 [homebrew-tap](https://github.com/tornikegomareli/homebrew-tap).
 
 ## Trademark

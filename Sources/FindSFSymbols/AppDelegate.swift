@@ -1,5 +1,6 @@
 import AppKit
 import Carbon.HIToolbox
+import Sparkle
 import SwiftUI
 
 /// The search window. It is a panel, so the hot key can show it over another app
@@ -12,12 +13,14 @@ final class SearchPanel: NSPanel {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private let model = SearchModel()
+    /// Sparkle checks the appcast one time per day and shows its own update window.
+    private let updater = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
     private var panel: SearchPanel!
     /// True after the hot key showed the panel. A click then copies, hides the panel, and pastes.
     private var isSummoned = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApp.mainMenu = Self.mainMenu()
+        NSApp.mainMenu = mainMenu()
 
         panel = SearchPanel(
             contentRect: NSRect(x: 0, y: 0, width: 1200, height: 720),
@@ -106,9 +109,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 
     /// A text field needs the Edit menu for Command-V, Command-A, and the other shortcuts.
-    private static func mainMenu() -> NSMenu {
+    private func mainMenu() -> NSMenu {
         let main = NSMenu()
         let app = NSMenu()
+        let check = app.addItem(
+            withTitle: "Check for Updates…", action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)),
+            keyEquivalent: "")
+        check.target = updater
+        app.addItem(.separator())
         app.addItem(withTitle: "Hide FindSFSymbols", action: #selector(NSApplication.hide(_:)), keyEquivalent: "h")
         app.addItem(withTitle: "Quit FindSFSymbols", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         let edit = NSMenu(title: "Edit")

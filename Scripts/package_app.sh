@@ -10,6 +10,8 @@ BUNDLE_ID=${BUNDLE_ID:-dev.gomareli.findsfsymbols}
 MACOS_MIN_VERSION=${MACOS_MIN_VERSION:-14.0}
 MENU_BAR_APP=${MENU_BAR_APP:-0}
 SIGNING_MODE=${SIGNING_MODE:-}
+# The public half of the Sparkle EdDSA key in the login Keychain. One key covers every app you ship.
+SPARKLE_PUBLIC_KEY=${SPARKLE_PUBLIC_KEY:-CS7EqGMvprKkjontSt/uLAG3gkw4CSwaMKVLd+W1UV4=}
 APP_IDENTITY=${APP_IDENTITY:-}
 
 if [[ -f "$ROOT/version.env" ]]; then
@@ -63,6 +65,10 @@ cat > "$APP/Contents/Info.plist" <<PLIST
     <key>LSMinimumSystemVersion</key><string>${MACOS_MIN_VERSION}</string>
     <key>LSUIElement</key><${LSUI_VALUE}/>
     <key>CFBundleIconFile</key><string>Icon</string>
+    <key>SUFeedURL</key><string>https://raw.githubusercontent.com/tornikegomareli/FindSFSymbols/main/appcast.xml</string>
+    <key>SUPublicEDKey</key><string>${SPARKLE_PUBLIC_KEY}</string>
+    <key>SUEnableAutomaticChecks</key><true/>
+    <key>SUScheduledCheckInterval</key><integer>86400</integer>
     <key>BuildTimestamp</key><string>${BUILD_TIMESTAMP}</string>
     <key>GitCommit</key><string>${GIT_COMMIT}</string>
 </dict>

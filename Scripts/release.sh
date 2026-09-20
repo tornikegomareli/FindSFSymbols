@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Cuts a release: bumps the version, builds a universal app, signs it with the Developer ID,
-# notarizes and staples it, publishes a GitHub release with the zip, and updates the Homebrew cask.
+# notarizes and staples it, signs the Sparkle appcast, publishes a GitHub release with the zip,
+# and updates the Homebrew cask.
 #
 #   Scripts/release.sh patch            # 0.1.0 -> 0.1.1   (also: minor, major)
 #   Scripts/release.sh 0.2.0            # an exact version
@@ -99,11 +100,35 @@ spctl -a -t exec -vv "$APP" 2>&1 | sed 's/^/  /'
 spctl -a -t exec "$APP" || fail "Gatekeeper rejects the app"
 
 /usr/bin/ditto --norsrc -c -k --keepParent "$APP" "$ZIP"
-cp "$ZIP" "$STABLE_ZIP"
 SHA256="$(shasum -a 256 "$ZIP" | cut -d' ' -f1)"
 echo "  $(basename "$ZIP")  sha256 $SHA256"
 
+# --- Sparkle appcast ---------------------------------------------------------
+# generate_appcast signs the zip with the EdDSA key in the login Keychain and adds the version to appcast.xml.
+# The Keychain can ask for access the first time. Choose Always Allow, so later releases run unattended.
+# Only the versioned zip is in dist/ at this point: generate_appcast refuses two archives with one version.
+step "Sparkle appcast"
+SPARKLE_BIN="$ROOT/.build/artifacts/sparkle/Sparkle/bin"
+[[ -x "$SPARKLE_BIN/generate_appcast" ]] || fail "Sparkle's tools are missing. Run swift build one time."
+APPCAST="$ROOT/appcast.xml"
+APPCAST_BEFORE="$(cat "$APPCAST" 2>/dev/null || true)"
+"$SPARKLE_BIN/generate_appcast" \
+  --download-url-prefix "https://github.com/$REPO/releases/download/$TAG/" \
+  --link "https://tornikegomareli.github.io/FindSFSymbols/" \
+  --full-release-notes-url "https://github.com/$REPO/releases" \
+  --maximum-versions 5 \
+  -o "$APPCAST" "$DIST"
+APPCAST_TEXT="$(cat "$APPCAST")"
+[[ "$APPCAST_TEXT" == *"sparkle:edSignature"* ]] || fail "the appcast has no EdDSA signature"
+[[ "$APPCAST_TEXT" == *"$APP_NAME-$VERSION.zip"* ]] || fail "the appcast does not name $APP_NAME-$VERSION.zip"
+echo "  appcast.xml names $VERSION and carries a signature"
+
+# The copy for releases/latest/download/. It is made after the appcast, for the reason above.
+cp "$ZIP" "$STABLE_ZIP"
+
 if [[ "$DRY_RUN" == 1 ]]; then
+  # A dry run leaves appcast.xml as it was.
+  if [[ -n "$APPCAST_BEFORE" ]]; then printf '%s\n' "$APPCAST_BEFORE" > "$APPCAST"; else rm -f "$APPCAST"; fi
   step "Dry run complete. Nothing was published. The zip is in dist/."
   exit 0
 fi
@@ -111,7 +136,7 @@ fi
 # --- Publish ---------------------------------------------------------------
 step "Commit, tag and push"
 trap - EXIT
-git add version.env
+git add version.env appcast.xml
 git commit --quiet -m "Release $TAG"
 git tag "$TAG"
 git push --quiet origin main "$TAG"
