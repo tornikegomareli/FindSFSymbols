@@ -125,13 +125,10 @@ It bumps `version.env`, runs the tests, builds a universal app, signs it with th
 and staples it, publishes a GitHub release with the zip, and updates the cask in
 [homebrew-tap](https://github.com/tornikegomareli/homebrew-tap).
 
-## Credits
-
-- The hover foil is a port of the shaders in [bpisano/Sticker](https://github.com/bpisano/Sticker) (MIT).
-- Ranking by [TypeSafe](https://typesafe.ai) Jev.
+## Trademark
 
 SF Symbols is a trademark of Apple Inc. This project is not affiliated with Apple. The app draws symbols
-with the system API and ships no symbol artwork. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+with the system API and ships no symbol artwork.
 
 ## License
 
