@@ -7,7 +7,7 @@
 <meta name="description" content="Describe an SF Symbol in plain words. The matches float up out of a physics pile. A free, open source macOS app.">
 <meta property="og:title" content="FindSFSymbols">
 <meta property="og:description" content="Describe a symbol. The matches float up out of a physics pile.">
-<meta property="og:image" content="https://tornikegomareli.github.io/FindSFSymbols/assets/search.png">
+<meta property="og:image" content="https://tornikegomareli.github.io/FindSFSymbols/assets/demo-poster.jpg">
 <link rel="icon" href="assets/icon.png">
 <style>
   :root {
@@ -43,7 +43,7 @@
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
   .shot { margin: 56px 0 8px; }
-  .shot img { width: 100%; height: auto; display: block; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.16); }
+  .shot img, .shot video { width: 100%; height: auto; display: block; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.16); }
   .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 48px 0; }
   .feature { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
   .feature h2 { font-size: 18px; margin: 0 0 6px; }
@@ -71,7 +71,7 @@
   </section>
 
   <div class="shot">
-    <img src="assets/search.png" width="2000" height="1200" alt="The query 'things you can wear': a jacket, a t-shirt, sunglasses and shoes float under the search bar, above a pile of colored symbols.">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/demo-poster.jpg" width="1920" height="1242" aria-label="A demo of FindSFSymbols: typed descriptions lift the matching symbols out of the pile, and a click copies the symbol name."><source src="assets/demo.mp4" type="video/mp4"></video>
   </div>
 
   <section class="features">
